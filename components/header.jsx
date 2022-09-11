@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import Image from 'mui-image';
+import Image from 'next/image';
 import Grid from '@material-ui/core/Grid';
 
 const pages = ['Blog'];
@@ -91,8 +91,8 @@ const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
-          <Box display='flex'   style={{width:'100%'}} justifyContent="center">
-          <Image  src="./assets/logo.png"  style={{width:'50%'}} />
+          <Box display='flex'  sx={{mx:{xs:2 , md:0}}}   style={{width:'100%'}} justifyContent="center">
+          <Image  src="/assets/logo.png"  width={500} height={50}/>
             </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
