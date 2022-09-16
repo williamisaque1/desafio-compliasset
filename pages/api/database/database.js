@@ -1,5 +1,6 @@
 const { Sequelize } = require("sequelize");
 //require("dotenv").config();
+require("pg");
 const conectar = new Sequelize(
   `d91ogh6omht38l`,
   `yqwizxtxmtigxj`,
