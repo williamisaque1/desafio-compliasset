@@ -25,7 +25,7 @@ export default function showBlog({data}) {
     )
 }
 export async function getServerSideProps({params}) {
-  const res =  await fetch(`https://desafio-compliasset-7aoqxn0lu-williamisaque1.vercel.app/api/teste/?id=${params?.id}`,{
+  const res =  await fetch(`http://localhost:3000/api/teste/?id=${params?.id}`,{
     method:'GET',
     headers:{'Content-Type': 'application/json'},
   });  
