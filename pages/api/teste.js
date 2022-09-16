@@ -54,7 +54,7 @@ const listar = async () => {
   }
 };
 const show = async (id) => {
-  console.log("listandooo");
+  console.log("listandooo" + id);
   try {
     const dados = await posts.findByPk(id);
     console.log("||||||||| ");
