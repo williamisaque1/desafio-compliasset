@@ -1,6 +1,7 @@
 const posts = require("./database/posts");
 export default async function pots(req, res) {
   console.log("alguma requisicao feita do tipo: ", req.method);
+  res.send("ok");
   if (req.method == "GET") {
     try {
       if (req.query.id) {
