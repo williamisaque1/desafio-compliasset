@@ -16,10 +16,5 @@ const conectar = new Sequelize(
     },
   }
 );
-try {
-  const resultado = await conectar.sync();
-  console.log(resultado);
-} catch (error) {
-  console.log(error);
-}
+
 module.exports = conectar;
