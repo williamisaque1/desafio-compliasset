@@ -11,11 +11,18 @@ import Link from "next/link";
 import { useEffect } from "react";
   export async function getServerSideProps() {
     console.log('wjejj')
-    const res = await fetch('https://desafio-compliasset-7aoqxn0lu-williamisaque1.vercel.app/api/teste')
-    console.log(res)
+    let res = ''
+    let rr = ''
+     fetch('https://desafio-compliasset-7aoqxn0lu-williamisaque1.vercel.app/api/teste').then((res)=>{
+      console.log(res)
+    res.json().then((rr)=>{
+      console.log(rr)
+      })
       
-    let rr =  await res.json();  
-    console.log(rr)
+    }).catch((err)=> console.log(err))
+   
+      
+  
     return {
       props: {data :rr}, 
     }
