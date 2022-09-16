@@ -39,7 +39,7 @@ export default function Create() {
                     updated_at: date
                 }
                 
-                let resp = await fetch('http://localhost:3000/api/teste',{
+                let resp = await fetch('https://desafio-compliasset-7aoqxn0lu-williamisaque1.vercel.app/api/teste',{
                 method:'POST',
                 body: JSON.stringify(dataObj),
                 headers:{
