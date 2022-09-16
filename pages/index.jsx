@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useEffect } from "react";
   export async function getServerSideProps() {
     const res = await (await fetch('https://desafio-compliasset-7aoqxn0lu-williamisaque1.vercel.app/api/teste')).json();  
+   console.log(res)
     return {
       props: {data :res.data}, 
     }
