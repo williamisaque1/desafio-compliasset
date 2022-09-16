@@ -9,22 +9,19 @@ import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import Link from "next/link";
 import { useEffect } from "react";
+import axios from "axios";
   export async function getServerSideProps() {
     console.log('wjejj')
     let res = ''
     let rrr = ''
-    
-     fetch('https://desafio-compliasset.vercel.app/api/teste').then((res)=>{
+    try{
+      res =  await axios.get('/api/teste')
       console.log(res)
-    res.json().then((rr)=>{
-      console.log(rr)
-    rrr = rr
-      })
-      
-    }).catch((err)=> console.log(err))
-   
-      
-  
+      rrr = await res.json() 
+      console.log(rrr)
+    }catch{
+      (err)=> console.log(err)
+    }
     return {
       props: {data :rrr}, 
     }

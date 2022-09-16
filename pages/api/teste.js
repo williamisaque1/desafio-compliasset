@@ -19,12 +19,12 @@ export default async function pots(req, res) {
     try {
       if (req.query.id) {
         let result = await show(req.query.id);
-        return res.status(200).json({
+        res.status(200).json({
           data: result,
         });
       } else {
         let result = await listar();
-        return res.status(200).json({
+        res.status(200).json({
           data: result,
         });
       }
