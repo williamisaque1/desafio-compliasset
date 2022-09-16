@@ -36,8 +36,8 @@ export default async function pots(req, res) {
         });
       } else {
         let result = await listar();
-        await res.status(200).json({
-          data: JSON.stringify(result),
+        res.status(200).json({
+          data: result,
         });
       }
     } catch (e) {
