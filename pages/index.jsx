@@ -16,7 +16,6 @@ import { useEffect } from "react";
     return {
       props: {data :rr.data}, 
     }
-
     }
 export default function Home({data}) {
 useEffect(()=> {
