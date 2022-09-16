@@ -10,9 +10,11 @@ import { Box } from "@mui/material";
 import Link from "next/link";
 import { useEffect } from "react";
   export async function getServerSideProps() {
+    console.log('wjejj')
     const res = await fetch('https://desafio-compliasset-7aoqxn0lu-williamisaque1.vercel.app/api/teste',{ mode: 'no-cors'})
+    console.log(res)
     let rr =  await res.json();  
-   console.log(rr)
+
     return {
       props: {data :rr.data}, 
     }
