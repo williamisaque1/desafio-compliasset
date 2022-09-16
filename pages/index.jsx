@@ -12,11 +12,12 @@ import { useEffect } from "react";
   export async function getServerSideProps() {
     console.log('wjejj')
     let res = ''
-    let rr = ''
+    let rrr = ''
      fetch('https://desafio-compliasset-7aoqxn0lu-williamisaque1.vercel.app/api/teste').then((res)=>{
       console.log(res)
     res.json().then((rr)=>{
       console.log(rr)
+    rrr = rr
       })
       
     }).catch((err)=> console.log(err))
@@ -24,7 +25,7 @@ import { useEffect } from "react";
       
   
     return {
-      props: {data :rr}, 
+      props: {data :rrr}, 
     }
     }
 export default function Home({data}) {
@@ -39,7 +40,7 @@ console.log(data)
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <Box display={"flex"} overflow={"auto"} flexDirection={"column"} gap={2} >
-          {data.map((dataa,i) => {
+          {data?.map((dataa,i) => {
           
             return (
               <Card key={dataa.id} sx={{ maxWidth: 345 }}>
