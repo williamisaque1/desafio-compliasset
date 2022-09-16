@@ -41,6 +41,7 @@ export default async function pots(req, res) {
         });
       }
     } catch (e) {
+      console.log(e);
       res.status(500).send(e);
     }
   } else if (req.method == "POST") {
