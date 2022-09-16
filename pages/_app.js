@@ -7,6 +7,10 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
 import ResponsiveAppBar from "../components/header";
+import ButtonAdd from "../components/add";
+import styles from "../styles/Home.module.css";
+import styleGlobal from '../styles/globals.css'
+import Home from ".";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -20,9 +24,17 @@ export default function MyApp(props) {
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <ResponsiveAppBar />
+        <div className={[styleGlobal,styles.container]}> 
         <CssBaseline />
+        <ResponsiveAppBar />
+        <main className={styles.main}>
+  
+       
         <Component {...pageProps} />
+        </main>
+        <ButtonAdd/>
+       
+        </div>
       </ThemeProvider>
     </CacheProvider>
   );
