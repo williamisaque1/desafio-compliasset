@@ -16,7 +16,7 @@ import { useEffect } from "react";
     let rr =  await res.json();  
 
     return {
-      props: {data :rr.data}, 
+      props: {data :rr}, 
     }
     }
 export default function Home({data}) {
@@ -31,26 +31,26 @@ console.log(data)
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <Box display={"flex"} overflow={"auto"} flexDirection={"column"} gap={2} >
-          {data.map((data,i) => {
+          {data.map((dataa,i) => {
           
             return (
-              <Card key={data.id} sx={{ maxWidth: 345 }}>
+              <Card key={dataa.id} sx={{ maxWidth: 345 }}>
                 <CardMedia
                   component="img"
                   height="140"
-                  src= {data.img}
+                  src= {dataa.img}
                   alt="green iguana"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    {data.title}
+                    {dataa.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                   {data.description}
+                   {dataa.description}
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Link href={`blog/show/${data?.id}`} prefetch  >
+                  <Link href={`blog/show/${dataa?.id}`} prefetch  >
                   <a>
                   <Button size="small">Ler mais</Button>
                   </a>
