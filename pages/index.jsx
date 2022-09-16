@@ -31,7 +31,7 @@ console.log(data)
           {data.map((data,i) => {
           
             return (
-              <Card sx={{ maxWidth: 345 }}>
+              <Card key={data.id} sx={{ maxWidth: 345 }}>
                 <CardMedia
                   component="img"
                   height="140"
