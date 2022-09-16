@@ -47,6 +47,7 @@ const listar = async () => {
       raw: true,
       order: [["createdAt", "DESC"]],
     });
+    console.log(dados);
     return dados;
   } catch (err) {
     console.log(err);
