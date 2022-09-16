@@ -12,7 +12,7 @@ export default async function pots(req, res) {
       } else {
         let result = await listar();
         res.status(200).json({
-          result,
+          status: "ok",
         });
       }
     } catch (e) {
