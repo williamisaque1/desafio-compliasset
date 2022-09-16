@@ -13,7 +13,10 @@ export default async function pots(req, res) {
           data: result,
         });
       } else {
+        console.log("antes");
         let result = await listar();
+        console.log("depois");
+        console.log(result);
         res.status(200).json({
           data: result,
         });
