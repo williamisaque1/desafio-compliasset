@@ -1,32 +1,6 @@
 const posts = require("./database/posts");
 export default async function pots(req, res) {
   console.log("alguma requisicao feita do tipo: ", req.method);
-  let datas = [
-    {
-      id: 0,
-      title: "bolsas",
-      description: "loja cccscscscscscscsccdsaaaaaaaaaaaaaccscccs",
-      img: "ds2ds3ad2da",
-    },
-    {
-      id: 1,
-      title: "blusa",
-      description: "loja cccscscscscscscsccdsaaaaaaaaaaaaaccscccs",
-      img: "ds2ds3ad2da",
-    },
-    {
-      id: 2,
-      title: "camisa",
-      description: "loja cccscscscscscscaaaaaaaaaaaccscccs",
-      img: "ds2ds3ad2da",
-    },
-    {
-      id: 3,
-      title: "calcas",
-      description: "loja cccscscscscscscsccdsaaaccscccs",
-      img: "ds2ds3ad2da",
-    },
-  ];
   if (req.method == "GET") {
     try {
       if (req.query.id) {
