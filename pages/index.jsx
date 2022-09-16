@@ -14,18 +14,24 @@ import axios from "axios";
     console.log('wjejj')
     let res = ''
     let rrr = ''
-    try{
-      res =  await axios.get('/api/teste')
-      console.log(res)
-      rrr = await res.json() 
-      console.log(rrr)
-    }catch{
-      (err)=> console.log(err)
-    }
+      await axios.get('/api/teste').then((ress)=>{
+        res = ress
+        console.log(res)
+        res.json().then((r)=>{
+          rrr = r
+          console.log(rrr)
+        })
+       
+      }).catch((err)=> {
+      console.log(err)
+
+      })
+      
+  
     return {
       props: {data :rrr}, 
     }
-    }
+  } 
 export default function Home({data}) {
 useEffect(()=> {
 console.log(data)
