@@ -3,7 +3,6 @@ import Cors from "cors";
 const cors = Cors();
 export default async function pots(req, res) {
   console.log("alguma requisicao feita do tipo: ", req.method);
-  res.send("ok");
 
   if (req.method == "GET") {
     try {
