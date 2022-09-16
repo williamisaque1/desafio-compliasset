@@ -11,7 +11,7 @@ import Link from "next/link";
 import { useEffect } from "react";
   export async function getServerSideProps() {
     console.log('wjejj')
-    const res = await fetch('https://desafio-compliasset-7aoqxn0lu-williamisaque1.vercel.app/api/teste',{ headers: {'Content-Type':'application/json'}})
+    const res = await fetch('https://desafio-compliasset-7aoqxn0lu-williamisaque1.vercel.app/api/teste')
     console.log(res)
       
     let rr =  await res.json();  
