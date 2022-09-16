@@ -29,30 +29,43 @@ export default function Create() {
             if(!title || !content){
                 return Seterrors(true)
             }else{
+                
+                const date = new Date();
+                let dataObj ={
+                    img: urlimagem,
+                    title,
+                    description: content,
+                    created_at: date,
+                    updated_at: date
+                }
+                
                 let resp = await fetch('http://localhost:3000/api/teste',{
                 method:'POST',
-                body: JSON.stringify({title,content}),
+                body: JSON.stringify(dataObj),
                 headers:{
                 'Content-Type':'application/json',
                 }
+               
             })
+            console.log(resp)
             if(resp.status === 200){
                 let respjson = await resp.json()
+                console.log(respjson)
                 setLoading(false)
                 router.push('/')
        }
       
       }
     }
-    useEffect(()=>{
-        if (imagem != null){
-            let reader = new FileReader();
-            reader.readAsDataURL(imagem);
-            reader.onloadend = () => {
-              Seturlimagem(`data:image/png;base64,${reader.result.replace(/^data:image\/[a-z]+;base64,/, "")}`)
-            }
+   useEffect(()=>{
+    if (imagem != null){
+        let reader = new FileReader();
+        reader.readAsDataURL(imagem);
+        reader.onloadend = () => {
+          Seturlimagem(`data:image/png;base64,${reader.result.replace(/^data:image\/[a-z]+;base64,/, "")}`)
         }
-    },[imagem])
+    }
+   },[imagem])
     return(
 <>
     <Head>

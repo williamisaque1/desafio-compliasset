@@ -1,11 +1,11 @@
-//const { Sequelize } = require("sequelize");
+const { Sequelize } = require("sequelize");
 //require("dotenv").config();
 const conectar = new Sequelize(
-  `d3ta08t1ncvui2`,
-  `ybgawrxvstjyve`,
-  `a0baaf491f427234ef81d0d48d3d1e1ff57fd12c114ed64de1d6c7285680befe`,
+  `d91ogh6omht38l`,
+  `yqwizxtxmtigxj`,
+  `e87c365ee3645610f0855c7bb5b6823ac67c9efe5c8de9f65200f343e29e2f58`,
   {
-    host: `ec2-54-196-33-23.compute-1.amazonaws.com`,
+    host: `ec2-3-228-236-221.compute-1.amazonaws.com`,
     dialect: "postgres",
 
     dialectOptions: {

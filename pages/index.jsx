@@ -1,7 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
-
-import { Checkbox } from "@material-ui/core";
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -11,17 +8,18 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import Link from "next/link";
+import { useEffect } from "react";
   export async function getServerSideProps() {
-  
     const res = await (await fetch('http://localhost:3000/api/teste')).json();  
-   // console.log(res.data)
     return {
-      props: {data:res.data}, 
+      props: {data :res.data}, 
     }
 
     }
 export default function Home({data}) {
-
+useEffect(()=> {
+console.log(data)
+},[])
   return (
  <>
       <Head>
@@ -37,7 +35,7 @@ export default function Home({data}) {
                 <CardMedia
                   component="img"
                   height="140"
-                  image="./assets/bradPitt.jpg"
+                  src= {data.img}
                   alt="green iguana"
                 />
                 <CardContent>

@@ -1,9 +1,14 @@
 import { Container } from "@mui/material"
 import style from '../../../styles/Home.module.css' 
+import Image from "next/image";
+import { Box } from "@material-ui/core";
 export default function showBlog({data}) {
 
     return (
         <Container maxwidth="lg" sx={{lg:{textAlign:'center'}}} className={'testando'}>
+          <Box className={style.imgShow}>
+        <Image   alt={`imagem do post ${data?.title}`} src={data.img}  width={500} height={200}/>
+        </Box>
            <article>
             <h1 align='center'>{data?.title}</h1>
             <p className={style.description}>{data.description}</p>

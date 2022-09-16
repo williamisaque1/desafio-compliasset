@@ -1,7 +1,7 @@
-//const { DataTypes } = require("sequelize");
+const { DataTypes } = require("sequelize");
 const conectar = require("./database");
 const post = conectar.define(
-  "posts",
+  "post",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -9,11 +9,15 @@ const post = conectar.define(
       autoIncrement: true,
       allowNull: false,
     },
+    img: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     title: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-    conteudo: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -24,7 +28,7 @@ const post = conectar.define(
 );
 post
   .sync({ force: false })
-  .then(() => {})
+  .then((e) => {})
   .catch((err) => {
     console.log(err);
   });
