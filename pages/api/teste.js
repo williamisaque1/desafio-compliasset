@@ -2,19 +2,9 @@ const posts = require("./database/posts");
 import Cors from "cors";
 const cors = Cors();
 export default async function pots(req, res) {
-  function runMiddleware(req, res, fn) {
-    return new Promise((resolve, reject) => {
-      fn(req, res, (result) => {
-        if (result instanceof Error) {
-          return reject(result);
-        }
-        return resolve(result);
-      });
-    });
-  }
-  await runMiddleware(req, res, cors);
   console.log("alguma requisicao feita do tipo: ", req.method);
   res.send("ok");
+
   if (req.method == "GET") {
     try {
       if (req.query.id) {

@@ -9,7 +9,17 @@ const conectar = new Sequelize(
     host: `ec2-3-228-236-221.compute-1.amazonaws.com`,
     dialect: "postgres",
 
-    dialectOptions: {},
+    dialectOptions: {
+      ssl: {
+        rejectUnauthorized: false,
+      },
+    },
   }
 );
+try {
+  const resultado = await conectar.sync();
+  console.log(resultado);
+} catch (error) {
+  console.log(error);
+}
 module.exports = conectar;
