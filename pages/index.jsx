@@ -15,7 +15,7 @@ import axios from "axios";
     console.log(req.originalUrl)
     let res = ''
   
-      await axios.get('/api/teste').then((ress)=>{
+       axios.get('/api/teste').then((ress)=>{
         console.log(ress.data)
         ress.data.json().then((r)=>{
          res = r
