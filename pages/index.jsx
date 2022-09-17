@@ -12,17 +12,22 @@ import { useEffect,useState } from "react";
 import axios from "axios";
 
   export async function getServerSideProps() {
-     let resp =  await axios.get('https://desafio-compliasset.vercel.app/api/teste')
-     resp = await resp.data.data
+    console.log('wjejj')
+    
+     let res =  await axios.get('https://desafio-compliasset.vercel.app/api/teste')
+     res = await res.data.data
+ 
+         console.log('dataaa')
+     
+      
     return {
-      props: {resp}, 
+      props: {data :res}, 
     }
   } 
-export default function Home({resp}) {
+export default function Home({data}) {
 useEffect(()=> {
 
 console.log('chaaaaa')
-console.log(resp)
 
 
 },[])
@@ -34,7 +39,7 @@ console.log(resp)
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <Box display={"flex"} overflow={"auto"} flexDirection={"column"} gap={2} >
-          { resp ? (resp?.map((dataa,i) => {
+          { data ? (data.map((dataa,i) => {
           
             return (
               <Card key={dataa.id} sx={{ maxWidth: 345 }}>
