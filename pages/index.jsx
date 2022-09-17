@@ -17,18 +17,13 @@ import axios from "axios";
   
        axios.get('https://desafio-compliasset.vercel.app/api/teste').then((ress)=>{
         console.log(ress)
-        ress.json().then((r)=>{
-         res = r
          console.log('dataaa')
-          console.log(res)
-        })
-       
+         res = ress
       }).catch((err)=> {
       console.log(err)
 
       })
       
-  
     return {
       props: {data :res}, 
     }
@@ -39,9 +34,9 @@ useEffect(()=> {
   axios.get('https://desafio-compliasset.vercel.app/api/teste').then((ress)=>{
     console.log('oii')
     console.log(ress)
-    ress.json().then((r)=>{
+    
       Setdatass(r.data.data)
-    })
+  
   })
 
   alert(data?.length)
