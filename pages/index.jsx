@@ -8,8 +8,9 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import axios from "axios";
+const [datass,Setdatass] = useState('')
   export async function getServerSideProps() {
     console.log('wjejj')
     let res = ''
@@ -34,9 +35,16 @@ import axios from "axios";
   } 
 export default function Home({data}) {
 useEffect(()=> {
+  axios.get('https://desafio-compliasset.vercel.app/api/teste').then((ress)=>{
+    console.log(ress)
+    ress.json().then((r)=>{
+      Setdatass(r)
+    })
+  })
+
   alert(data?.length)
-console.log(data)
-},[])
+console.log(datass)
+},[datass])
   return (
  <>
       <Head>
@@ -45,7 +53,7 @@ console.log(data)
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <Box display={"flex"} overflow={"auto"} flexDirection={"column"} gap={2} >
-          { data ? (data.map((dataa,i) => {
+          { datass ? (datass.map((dataa,i) => {
           
             return (
               <Card key={dataa.id} sx={{ maxWidth: 345 }}>
