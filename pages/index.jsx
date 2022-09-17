@@ -10,7 +10,7 @@ import { Box } from "@mui/material";
 import Link from "next/link";
 import { useEffect,useState } from "react";
 import axios from "axios";
-const [datass,Setdatass] = useState('')
+
   export async function getServerSideProps() {
     console.log('wjejj')
     let res = ''
@@ -34,6 +34,7 @@ const [datass,Setdatass] = useState('')
     }
   } 
 export default function Home({data}) {
+  const [datass,Setdatass] = useState('')
 useEffect(()=> {
   axios.get('https://desafio-compliasset.vercel.app/api/teste').then((ress)=>{
     console.log(ress)
