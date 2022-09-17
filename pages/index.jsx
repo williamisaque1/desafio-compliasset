@@ -13,37 +13,24 @@ import axios from "axios";
 
   export async function getServerSideProps() {
     console.log('wjejj')
-    let res = ''
-  
-       axios.get('https://desafio-compliasset.vercel.app/api/teste').then((ress)=>{
-        console.log(ress.data.data)
-         console.log('dataaa')
-         console.log(ress.data[0])
-         res = ress.data.data
-      }).catch((err)=> {
-      console.log(err)
-
-      })
+    
+     let res =  await axios.get('https://desafio-compliasset.vercel.app/api/teste')
+     res = await res.data.data
+ 
+         console.log('dataaa'  + res.length) 
+     
       
     return {
       props: {data :res}, 
     }
   } 
 export default function Home({data}) {
-  const [datass,Setdatass] = useState('')
 useEffect(()=> {
-  axios.get('https://desafio-compliasset.vercel.app/api/teste').then((ress)=>{
-    console.log('oii')
-    console.log(ress)
-    
-      Setdatass(r.data.data)
-  
-  })
 
-console.log('dataaaaa')
-console.log(data)
-console.log(datass)
-},[datass])
+console.log('chaaaaa')
+
+
+},[])
   return (
  <>
       <Head>
@@ -52,7 +39,7 @@ console.log(datass)
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <Box display={"flex"} overflow={"auto"} flexDirection={"column"} gap={2} >
-          { datass ? (datass.map((dataa,i) => {
+          { data ? (data.map((dataa,i) => {
           
             return (
               <Card key={dataa.id} sx={{ maxWidth: 345 }}>

@@ -5,7 +5,6 @@ export default async function pots(req, res) {
   console.log("alguma requisicao feita do tipo: ", req.method);
 
   if (req.method == "GET") {
-    console.log(req.originalUrl);
     try {
       if (req.query.id) {
         let result = await show(req.query.id);
@@ -13,12 +12,9 @@ export default async function pots(req, res) {
           data: result,
         });
       } else {
-        console.log("antes");
         let result = await listar();
-        console.log("depois");
-        console.log(result);
         res.status(200).json({
-          data: result,
+          result,
         });
       }
     } catch (e) {
@@ -47,7 +43,6 @@ const listar = async () => {
       raw: true,
       order: [["createdAt", "DESC"]],
     });
-    console.log(dados);
     return dados;
   } catch (err) {
     console.log(err);
