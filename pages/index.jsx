@@ -15,14 +15,9 @@ import axios from "axios";
     console.log('wjejj')
     
      let res =  await axios.get('https://desafio-compliasset.vercel.app/api/teste')
-     res = await res.data.data
- 
-         console.log('dataaa')
-         console.log(res.length)
-     
-      
+   let resposta  = await res.data.result     
     return {
-      props: {data :res}, 
+      props: {data :resposta}, 
     }
   } 
 export default function Home({data}) {
