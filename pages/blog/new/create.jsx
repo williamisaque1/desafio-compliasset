@@ -88,7 +88,6 @@ export default function Create() {
     return(
 <>
     <Head>
-    <html lang={'pt-BR'} />
     <title>Tela de cadastro do post </title>
     <meta name="description" content="blog desafio compliasset | criacao dos posts" />
     </Head>

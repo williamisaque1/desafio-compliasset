@@ -9,7 +9,6 @@ export default function showBlog({data}) {
     return (
       <>
       <Head>
-      <html lang={'pt-BR'} />
       <title>{data.title} </title>
       <meta name="description" content={data.description} />
       <link rel="icon" href="/favicon.ico" />

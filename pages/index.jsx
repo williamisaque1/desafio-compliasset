@@ -30,7 +30,6 @@ console.log('chaaaaa')
   return (
  <>
       <Head>
-        <html lang={'pt-BR'} />
         <title>Tela index </title>
         <meta name="description" content="blog desafio compliasset" />
         <link rel="icon" href="/favicon.ico" />
@@ -56,7 +55,7 @@ console.log('chaaaaa')
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Link href={`blog/show/${dataa?.id}`}  >
+                  <Link href={`blog/show/${dataa?.id}`} prefetch >
                   <a>
                   <Button size="small">Ler mais</Button>
                   </a>
