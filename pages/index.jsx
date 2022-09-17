@@ -18,7 +18,7 @@ import axios from "axios";
         console.log(ress)
         ress.json().then((r)=>{
          res = r
-         
+         console.log('dataaa')
           console.log(res)
         })
        
