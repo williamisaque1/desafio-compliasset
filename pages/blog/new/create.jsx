@@ -34,13 +34,17 @@ export default function Create() {
                     img: urlimagem,
                     title,
                     description: content,
-                    created_at: `${date}`,
-                    updated_at: `${date}`,
+                    created_at: date,
+                    updated_at: date,
                 }
                let datajson = JSON.stringify(dataObj)
                console.log(dataObj)
                 console.log('hhh')
-                let resp =  await axios.post('https://desafio-compliasset.vercel.app/api/teste',datajson)
+                let resp =  await axios.post('https://desafio-compliasset.vercel.app/api/teste',{ img: urlimagem,
+                title,
+                description: content,
+                created_at: date,
+                updated_at: date,})
           console.log(resp.status)
                 if (resp.status === 200){
                 setLoading(false)
