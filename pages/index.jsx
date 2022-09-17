@@ -16,9 +16,10 @@ import axios from "axios";
     let res = ''
   
        axios.get('https://desafio-compliasset.vercel.app/api/teste').then((ress)=>{
-        console.log(ress)
+        console.log(ress.data.data)
          console.log('dataaa')
-         res = ress
+         console.log(ress.data[0])
+         res = ress.data.data
       }).catch((err)=> {
       console.log(err)
 
