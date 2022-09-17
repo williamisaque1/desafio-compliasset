@@ -12,7 +12,6 @@ import { useEffect } from "react";
 import axios from "axios";
   export async function getServerSideProps() {
     console.log('wjejj')
-    console.log(req.originalUrl)
     let res = ''
   
        axios.get('/api/teste').then((ress)=>{

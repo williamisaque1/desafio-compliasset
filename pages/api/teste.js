@@ -5,6 +5,7 @@ export default async function pots(req, res) {
   console.log("alguma requisicao feita do tipo: ", req.method);
 
   if (req.method == "GET") {
+    console.log(req.originalUrl);
     try {
       if (req.query.id) {
         let result = await show(req.query.id);
