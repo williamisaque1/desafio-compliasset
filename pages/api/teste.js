@@ -27,7 +27,6 @@ export default async function pots(req, res) {
     try {
       let result = await add(img, title, description, created_at, updated_at);
       console.log("deuuuuuuuu certoooo");
-      console.log(result);
       res.status(200).json({
         status: "ok",
       });

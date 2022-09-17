@@ -37,15 +37,17 @@ export default function Create() {
                 let resp =  await axios.post('https://desafio-compliasset.vercel.app/api/teste',datajson,{headers: {
                 'Content-Type': 'application/json',
             }})
+          
+            console.log('esse eo resp sem o json')
+            console.log(resp)
+            console.log('esse eo resp data ')
+            console.log(resp?.data)
+            console.log(resp.status)
                   let respJson = await resp.json()
-                    console.log('esse eo resp com json')
-                    console.log(respJson)
-                    console.log('esse eo resp sem o json')
-                    console.log(resp)
-                    console.log('esse eo resp data ')
-                    console.log(resp?.data)
-                    console.log(resp.status)
-                if (resp.status === 200){
+                  console.log('esse eo resp com json')
+                  console.log(respJson)
+                 
+                if (true){
                 setLoading(false)
                 router.push('/')
        }
