@@ -44,14 +44,14 @@ console.log(data)
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <Box display={"flex"} overflow={"auto"} flexDirection={"column"} gap={2} >
-          { data && (data?.map((dataa,i) => {
+          { data?.map((dataa,i) => {
           
             return (
               <Card key={dataa.id} sx={{ maxWidth: 345 }}>
                 <CardMedia
                   component="img"
                   height="140"
-                  src= {dataa.data.img}
+                  src= {dataa.img}
                   alt="green iguana"
                 />
                 <CardContent>
@@ -71,7 +71,7 @@ console.log(data)
                 </CardActions>
               </Card>
             );
-          }))}
+          })}
             
         </Box>
         </>
