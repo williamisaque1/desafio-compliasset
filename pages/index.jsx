@@ -13,13 +13,12 @@ import axios from "axios";
   export async function getServerSideProps() {
     console.log('wjejj')
     let res = ''
-    let rrr = ''
+  
       await axios.get('/api/teste').then((ress)=>{
-        res = ress
         console.log(res)
         res.json().then((r)=>{
-          rrr = r
-          console.log(rrr)
+         res = r
+          console.log(res)
         })
        
       }).catch((err)=> {
@@ -29,7 +28,7 @@ import axios from "axios";
       
   
     return {
-      props: {data :rrr}, 
+      props: {data :res}, 
     }
   } 
 export default function Home({data}) {
@@ -51,7 +50,7 @@ console.log(data)
                 <CardMedia
                   component="img"
                   height="140"
-                  src= {dataa.img}
+                  src= {dataa.data.img}
                   alt="green iguana"
                 />
                 <CardContent>
