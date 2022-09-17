@@ -40,7 +40,7 @@ export default function Create() {
                let datajson = JSON.stringify(dataObj)
                console.log(dataObj)
                 console.log('hhh')
-                let resp =  await axios.post('https://desafio-compliasset.vercel.app/api/teste',datajson,{ headers:{ 'Content-Type': 'application/json'}})
+                let resp =  await axios.post('https://desafio-compliasset.vercel.app/api/teste',{dataObj},{ headers:{ 'Content-Type': 'application/json'}})
           console.log(resp.status)
                 if (resp.status === 200){
                 setLoading(false)
