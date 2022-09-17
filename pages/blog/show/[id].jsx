@@ -27,9 +27,14 @@ export default function showBlog({data}) {
 }
 export async function getServerSideProps({params}) {
   let res =  await axios.get(`https://desafio-compliasset.vercel.app/api/teste?id=${params?.id}`)
-
+  console.log('ressss')
+  console.log(res)
+  console.log('ressss data')
+  console.log(res?.data)
+  console.log('ressss data result')
+  console.log(res?.data?.result)
     return {
-      props: {data:res.data},
+      props: {data:res?.data?.result},
     }
 
     }

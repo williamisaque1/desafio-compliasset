@@ -7,7 +7,7 @@ export default async function pots(req, res) {
       if (req.query.id) {
         let result = await show(req.query.id);
         res.status(200).json({
-          data: result,
+          result,
         });
       } else {
         let result = await listar();
@@ -17,7 +17,10 @@ export default async function pots(req, res) {
       }
     } catch (e) {
       console.log(e);
-      res.status(500).send(e);
+      res.status(500).json({
+        status: "error",
+        message: `${e}`,
+      });
     }
   } else if (req.method == "POST") {
     const { img, title, description, created_at, updated_at } = req.body;
@@ -29,7 +32,11 @@ export default async function pots(req, res) {
         status: "ok",
       });
     } catch (e) {
-      res.status(500).send(e);
+      console.log(e);
+      res.status(500).json({
+        status: "error",
+        message: `${e}`,
+      });
     }
   } else if (req.method == "PATH") {
   }
