@@ -34,7 +34,7 @@ export default function Create() {
                let datajson = JSON.stringify({img: urlimagem, title, description: content, created_at: date,updated_at: date});
                console.log(datajson)
                 console.log('hhh')
-                let resp =  await axios.post('https://desafio-compliasset.vercel.app/api/teste',datajson,{headers: {
+                let resp =  await axios.post('/api/teste',datajson,{headers: {
                 'Content-Type': 'application/json',
             }})
                      

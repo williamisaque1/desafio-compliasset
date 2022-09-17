@@ -14,7 +14,8 @@ import axios from "axios";
   export async function getServerSideProps() {
     console.log('wjejj')
     
-     let res =  await axios.get('https://desafio-compliasset.vercel.app/api/teste')
+     let res =  await axios.get('/api/teste')
+     console.log(res)
    let resposta  = await res.data.result     
     return {
       props: {data :resposta}, 
