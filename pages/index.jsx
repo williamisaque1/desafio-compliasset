@@ -30,9 +30,11 @@ console.log('chaaaaa')
   return (
  <>
       <Head>
+        <html lang={'pt-BR'} />
         <title>Tela index </title>
         <meta name="description" content="blog desafio compliasset" />
         <link rel="icon" href="/favicon.ico" />
+        
       </Head>
         <Box display={"flex"} overflow={"auto"} flexDirection={"column"} gap={2} >
           { data ? (data.map((dataa,i) => {
