@@ -18,6 +18,7 @@ import axios from "axios";
      res = await res.data.data
  
          console.log('dataaa')
+         console.log(res.length)
      
       
     return {
