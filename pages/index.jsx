@@ -14,7 +14,7 @@ import axios from "axios";
     console.log('wjejj')
     let res = ''
   
-       axios.get('/api/teste').then((ress)=>{
+       axios.get('https://desafio-compliasset.vercel.app/api/teste').then((ress)=>{
         console.log(ress.data)
         ress.data.json().then((r)=>{
          res = r
