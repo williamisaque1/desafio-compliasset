@@ -66,6 +66,7 @@ const show = async (id) => {
 };
 const add = async (img, title, description, create_at, update_at) => {
   try {
+    console.log(img.length);
     const dados = await posts.create({
       img,
       title,
@@ -75,6 +76,6 @@ const add = async (img, title, description, create_at, update_at) => {
     });
     return dados;
   } catch (err) {
-    throw new Error(err);
+    throw err;
   }
 };
