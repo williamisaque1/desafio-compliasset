@@ -34,6 +34,7 @@ import axios from "axios";
   } 
 export default function Home({data}) {
 useEffect(()=> {
+  alert(data.length)
 console.log(data)
 },[])
   return (
