@@ -11,9 +11,10 @@ import Head from "next/head";
 import UploadRoundedIcon from '@mui/icons-material/UploadRounded';
 import Image from 'next/image';
 import axios from "axios";
+import Compress from 'compress.js';
 
 export default function Create() {
-
+    const  compress  =  new  Compress ()
     const [loading, setLoading] = useState(false);
     const [title,Settitle] = useState('')
     const [content,Setcontent] = useState('')
@@ -32,7 +33,6 @@ export default function Create() {
                 const date = new Date();
                
                let datajson = JSON.stringify({img: urlimagem ? urlimagem : '', title, description: content, created_at: date,updated_at: date});
-               console.log(datajson.img?.length)
                console.log(JSON.parse(datajson)?.img?.length)
                 console.log('hhh')
                 let resp =  await axios.post('https://desafio-compliasset.vercel.app/api/teste',datajson,{headers: {
@@ -48,13 +48,35 @@ export default function Create() {
       
       }
     }
+    function formatBytes(bytes, decimals = 2) {
+        if (!+bytes) return '0 Bytes'
+        const k = 1024
+        const dm = decimals < 0 ? 0 : decimals
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+        const i = Math.floor(Math.log(bytes) / Math.log(k))
+        return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
+    }
    useEffect(()=>{
     if (imagem != null){
-        let reader = new FileReader();
-        reader.readAsDataURL(imagem);
-        reader.onloadend = () => {
-          Seturlimagem(`data:image/png;base64,${reader.result.replace(/^data:image\/[a-z]+;base64,/, "")}`)
-        }
+        compress.compress([...imagem], {
+            size: 4, 
+            quality: .75, 
+            maxWidth: 1920, 
+            maxHeight: 1920, 
+            resize: true, 
+            rotate: false, 
+          }).then((data) => {
+            const file = Compress.convertBase64ToFile(data[0].data, data[0].ext)
+            console.log('imagem  nao compactada compactada base 64')
+            console.log(formatBytes(imagem[0].size))
+            console.log('imagem compactada base 64')
+            console.log(formatBytes(file.size))
+            const prefix = data[0].prefix
+            Seturlimagem(`${prefix}${data[0].data}`)
+          }).catch((e)=>{
+                console.log('erro ' + e)
+                setLoading(false)
+          })
     }
    },[imagem])
     return(
@@ -99,7 +121,7 @@ export default function Create() {
                     > Save </LoadingButton>
                      <Fab style={{alignSelf:'start'}} color='warning' aria-label="add" onClick={()=> inputImg.current.click() }>
                     
-                    <input ref={inputImg} className={styles.con} onChange={(e)=> Setimagem(e.target.files[0])}  type={'file'}  accept="image/*"  multiple />
+                    <input ref={inputImg} className={styles.con} onChange={(e)=> Setimagem(e.target.files)}  type={'file'}  accept="image/*"  multiple />
                     <UploadRoundedIcon/>
                    
                     </Fab>
