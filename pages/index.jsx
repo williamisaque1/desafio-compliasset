@@ -12,12 +12,12 @@ import { useEffect } from "react";
 import axios from "axios";
   export async function getServerSideProps() {
     console.log('wjejj')
+    console.log(req.originalUrl)
     let res = ''
   
       await axios.get('/api/teste').then((ress)=>{
-        console.log(ress.body)
         console.log(ress.data)
-        res.json().then((r)=>{
+        ress.data.json().then((r)=>{
          res = r
          
           console.log(res)
