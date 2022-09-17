@@ -30,22 +30,21 @@ export default function Create() {
             }else{
                 
                 const date = new Date();
-                let dataObj = {
-                    img: urlimagem,
-                    title,
-                    description: content,
-                    created_at: date,
-                    updated_at: date,
-                }
-               let datajson = JSON.stringify(dataObj)
-               console.log(dataObj)
+               
+               let datajson = JSON.stringify({img: urlimagem, title, description: content, created_at: date,updated_at: date});
+               console.log(datajson)
                 console.log('hhh')
-                let resp =  await axios.post('https://desafio-compliasset.vercel.app/api/teste',{ img: urlimagem,
-                title,
-                description: content,
-                created_at: date,
-                updated_at: date,})
-          console.log(resp.status)
+                let resp =  await axios.post('https://desafio-compliasset.vercel.app/api/teste',datajson,{headers: {
+                'Content-Type': 'application/json',
+            }})
+                  let respJson = await resp.json()
+                    console.log('esse eo resp com json')
+                    console.log(respJson)
+                    console.log('esse eo resp sem o json')
+                    console.log(resp)
+                    console.log('esse eo resp data ')
+                    console.log(resp?.data)
+                    console.log(resp.status)
                 if (resp.status === 200){
                 setLoading(false)
                 router.push('/')
