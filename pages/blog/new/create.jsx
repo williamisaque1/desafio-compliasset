@@ -12,6 +12,7 @@ import UploadRoundedIcon from '@mui/icons-material/UploadRounded';
 import Image from 'next/image';
 import axios from "axios";
 import Compress from 'compress.js';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Create() {
     const  compress  =  new  Compress ()
@@ -35,6 +36,7 @@ export default function Create() {
                let datajson = JSON.stringify({img: urlimagem ? urlimagem : '', title, description: content, created_at: date,updated_at: date});
                console.log(JSON.parse(datajson)?.img?.length)
                 console.log('hhh')
+                try{
                 let resp =  await axios.post('https://desafio-compliasset.vercel.app/api/teste',datajson,{headers: {
                 'Content-Type': 'application/json',
             }})
@@ -45,6 +47,10 @@ export default function Create() {
                 }else{
                     setLoading(false) 
                 }
+            }catch(e){
+                console.log(e)
+                setLoading(false) 
+            }
       
       }
     }
@@ -106,31 +112,31 @@ export default function Create() {
             onChange={(e)=> Setcontent(e.target.value)}
             aria-label="maximum height"
             placeholder="coloque aqui o conteudo do seu post"
-            style={{ width: '100%',height:'400px', resize:'none'}}
+            style={{ width: '100%',height:'380px', resize:'none'}}
             />
             <Box display={'flex'} justifyContent={'space-between'} flexDirection={'row-reverse'}>
                 <LoadingButton
                     size="small"
                     color="secondary"
                     onClick={(e)=> submit(e)}
+                    disabled={imagem && !urlimagem}
                     type={"submit"}
                     loading={loading}
                     loadingPosition="start"
                     startIcon={<SaveIcon />}
                     variant="contained"
                     > Save </LoadingButton>
+                     { urlimagem && imagem   ? <Image  src={urlimagem}  width={70} height={70}/>
+                     : imagem && !urlimagem  ? <CircularProgress  /> : null  
+                    }   
                      <Fab style={{alignSelf:'start'}} color='warning' aria-label="add" onClick={()=> inputImg.current.click() }>
                     
                     <input ref={inputImg} className={styles.con} onChange={(e)=> Setimagem(e.target.files)}  type={'file'}  accept="image/*"  multiple />
                     <UploadRoundedIcon/>
                    
-                    </Fab>
+                    </Fab>               
        
             </Box>
-     { urlimagem && (
-<Image  src={urlimagem}  width={500} height={500}/>
-     )
-}   
  
 
            
