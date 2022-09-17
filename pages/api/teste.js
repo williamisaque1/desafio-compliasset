@@ -23,7 +23,7 @@ export default async function pots(req, res) {
     }
   } else if (req.method == "POST") {
     const { img, title, description, created_at, updated_at } = req.body;
-    console.log(img.length);
+
     try {
       let result = await add(img, title, description, created_at, updated_at);
       console.log("deuuuuuuuu certoooo");
