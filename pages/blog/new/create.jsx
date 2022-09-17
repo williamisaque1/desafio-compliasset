@@ -1,5 +1,5 @@
-import { Container } from "@mui/material"
-import { useRef, useState } from "react";
+import { Container,Fab} from "@mui/material"
+import { useRef, useState, useEffect } from "react";
 import LoadingButton from '@mui/lab/LoadingButton';
 import Box from '@mui/material/Box';
 import SaveIcon from '@mui/icons-material/Save';
@@ -10,8 +10,7 @@ import { useRouter} from "next/router";
 import Head from "next/head";
 import UploadRoundedIcon from '@mui/icons-material/UploadRounded';
 import Image from 'next/image';
-import { Fab } from "@mui/material";
-import { useEffect } from "react";
+import axios from "axios";
 
 export default function Create() {
 
@@ -31,29 +30,20 @@ export default function Create() {
             }else{
                 
                 const date = new Date();
-                let dataObj ={
-                    img: urlimagem,
-                    title,
-                    description: content,
-                    created_at: date,
-                    updated_at: date
-                }
-                
-                let resp = await fetch('https://desafio-compliasset-7aoqxn0lu-williamisaque1.vercel.app/api/teste',{
-                method:'POST',
-                body: JSON.stringify(dataObj),
-                headers:{
-                'Content-Type':'application/json',
-                }
                
-            })
-            console.log(resp)
-            if(resp.status === 200){
-                let respjson = await resp.json()
-                console.log(respjson)
+               let datajson = JSON.stringify({img: urlimagem, title, description: content, created_at: date,updated_at: date});
+               console.log(datajson)
+                console.log('hhh')
+                let resp =  await axios.post('https://desafio-compliasset.vercel.app/api/teste',datajson,{headers: {
+                'Content-Type': 'application/json',
+            }})
+                     
+                if (resp.status === 200 && resp.data.status == 'ok'){
                 setLoading(false)
                 router.push('/')
-       }
+                }else{
+                    setLoading(false) 
+                }
       
       }
     }

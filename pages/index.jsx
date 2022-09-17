@@ -8,18 +8,24 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import Link from "next/link";
-import { useEffect } from "react";
-  export async function getServerSideProps() {
-    const res = await (await fetch('https://desafio-compliasset-7aoqxn0lu-williamisaque1.vercel.app/api/teste',{ mode: 'no-cors'})).json();  
-   console.log(res)
-    return {
-      props: {data :res.data}, 
-    }
+import { useEffect,useState } from "react";
+import axios from "axios";
 
+  export async function getServerSideProps() {
+    console.log('wjejj')
+    
+     let res =  await axios.get('https://desafio-compliasset.vercel.app/api/teste')
+   let resposta  = await res.data.result     
+    return {
+      props: {data :resposta}, 
     }
+  } 
 export default function Home({data}) {
 useEffect(()=> {
-console.log(data)
+
+console.log('chaaaaa')
+
+
 },[])
   return (
  <>
@@ -29,26 +35,26 @@ console.log(data)
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <Box display={"flex"} overflow={"auto"} flexDirection={"column"} gap={2} >
-          {data.map((data,i) => {
+          { data ? (data.map((dataa,i) => {
           
             return (
-              <Card key={data.id} sx={{ maxWidth: 345 }}>
+              <Card key={dataa.id} sx={{ maxWidth: 345 }}>
                 <CardMedia
                   component="img"
                   height="140"
-                  src= {data.img}
+                  src= {dataa.img}
                   alt="green iguana"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    {data.title}
+                    {dataa.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                   {data.description}
+                   {dataa.description}
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Link href={`blog/show/${data?.id}`} prefetch  >
+                  <Link href={`blog/show/${dataa?.id}`} prefetch  >
                   <a>
                   <Button size="small">Ler mais</Button>
                   </a>
@@ -56,7 +62,8 @@ console.log(data)
                 </CardActions>
               </Card>
             );
-          })}
+           
+          })) : <h2>carregando</h2>}
             
         </Box>
         </>

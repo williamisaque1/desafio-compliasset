@@ -1,5 +1,6 @@
 const { Sequelize } = require("sequelize");
 //require("dotenv").config();
+import pg from "pg";
 const conectar = new Sequelize(
   `d91ogh6omht38l`,
   `yqwizxtxmtigxj`,
@@ -7,7 +8,7 @@ const conectar = new Sequelize(
   {
     host: `ec2-3-228-236-221.compute-1.amazonaws.com`,
     dialect: "postgres",
-
+    dialectModule: pg,
     dialectOptions: {
       ssl: {
         rejectUnauthorized: false,
@@ -15,4 +16,5 @@ const conectar = new Sequelize(
     },
   }
 );
+
 module.exports = conectar;
