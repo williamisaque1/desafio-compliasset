@@ -15,9 +15,10 @@ import axios from "axios";
     let res = ''
   
       await axios.get('/api/teste').then((ress)=>{
-        console.log(res)
+        console.log(ress)
         res.json().then((r)=>{
          res = r
+         debugger
           console.log(res)
         })
        
