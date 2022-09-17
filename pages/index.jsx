@@ -54,7 +54,7 @@ console.log('chaaaaa')
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Link href={`blog/show/${dataa?.id}`} prefetch  >
+                  <Link href={`blog/show/${dataa?.id}`}  >
                   <a>
                   <Button size="small">Ler mais</Button>
                   </a>
