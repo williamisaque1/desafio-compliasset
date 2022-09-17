@@ -9,16 +9,16 @@ export default function showBlog({data}) {
     return (
       <>
       <Head>
-      <title>{data?.title} </title>
-      <meta name="description" content={data?.description} />
+      <title>{data.title} </title>
+      <meta name="description" content={data.description} />
       <link rel="icon" href="/favicon.ico" />
     </Head>
         <Container maxwidth="lg" sx={{lg:{textAlign:'center'}}} className={'testando'}>
           <Box className={style.imgShow}>
-        <Image   alt={`imagem do post ${data?.title}`} src={data?.img}  width={500} height={200}/>
+        <Image alt={`imagem do post ${data.title}`} src={data.img}  width={500} height={200}/>
         </Box>
            <article>
-            <h1 align='center'>{data?.title}</h1>
+            <h1 align='center'>{data.title}</h1>
             <p className={style.description}>{data.description}</p>
             </article>
         </Container>
@@ -27,12 +27,8 @@ export default function showBlog({data}) {
 }
 export async function getServerSideProps({params}) {
   let res =  await axios.get(`https://desafio-compliasset.vercel.app/api/teste?id=${params?.id}`)
-  console.log('ressss')
-  console.log(res)
-  console.log('ressss data')
-  console.log(res?.data)
   console.log('ressss data result')
-  console.log(res?.data?.result)
+  console.log(res?.data.result)
     return {
       props: {data:res?.data?.result},
     }
