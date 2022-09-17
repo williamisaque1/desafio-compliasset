@@ -3,6 +3,7 @@ import style from '../../../styles/Home.module.css'
 import Image from "next/image";
 import { Box } from "@material-ui/core";
 import Head from "next/head";
+import axios from "axios";
 export default function showBlog({data}) {
 
     return (
@@ -14,7 +15,7 @@ export default function showBlog({data}) {
     </Head>
         <Container maxwidth="lg" sx={{lg:{textAlign:'center'}}} className={'testando'}>
           <Box className={style.imgShow}>
-        <Image   alt={`imagem do post ${data?.title}`} src={data.img}  width={500} height={200}/>
+        <Image   alt={`imagem do post ${data?.title}`} src={data?.img}  width={500} height={200}/>
         </Box>
            <article>
             <h1 align='center'>{data?.title}</h1>
@@ -25,15 +26,10 @@ export default function showBlog({data}) {
     )
 }
 export async function getServerSideProps({params}) {
-  const res =  await fetch(`https://desafio-compliasset-7aoqxn0lu-williamisaque1.vercel.app/api/teste/?id=${params?.id}`,{
-    method:'GET',
-    headers:{'Content-Type': 'application/json'},
-  });  
-  const resp  = await res.json()
+  let res =  await axios.get(`https://desafio-compliasset.vercel.app/api/teste?id=${params?.id}`)
 
-    
     return {
-      props: {data:resp.data},
+      props: {data:res.data},
     }
 
     }
