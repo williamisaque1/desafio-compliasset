@@ -37,9 +37,10 @@ export default function Home({data}) {
   const [datass,Setdatass] = useState('')
 useEffect(()=> {
   axios.get('https://desafio-compliasset.vercel.app/api/teste').then((ress)=>{
+    console.log('oii')
     console.log(ress)
     ress.json().then((r)=>{
-      Setdatass(r)
+      Setdatass(r.data.data)
     })
   })
 
