@@ -39,7 +39,8 @@ useEffect(()=> {
   
   })
 
-  alert(data?.length)
+console.log('dataaaaa')
+console.log(data)
 console.log(datass)
 },[datass])
   return (
