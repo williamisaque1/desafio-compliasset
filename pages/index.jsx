@@ -10,18 +10,24 @@ import { Box } from "@mui/material";
 import Link from "next/link";
 import { useEffect,useState } from "react";
 import axios from "axios";
-import useSWR from 'swr'
+import useSWR, {SWRConfig} from 'swr'
+
+const fetcher = (url) =>  axios(url).then((r) => r.data.result)
   export async function getServerSideProps() {
     console.log('wjejj')
-    
-     //let res =  await axios.get('https://desafio-compliasset.vercel.app/api/teste')
-  // let resposta  = await res.data.result     
+
+     let res =  await fetcher('https://desafio-compliasset.vercel.app/' + 'api/teste')
+   let resposta  = await res     
+   console.log(!!res)
     return {
-      props: {data :'n'}, 
+      props: {
+         data:resposta
+      }
     }
   } 
-export default function Home({}) {
-  let { data, error,mutate } =  useSWR('https://desafio-compliasset.vercel.app/')
+export default function Home({data:datass}) {
+  let { data, error,mutate } =  useSWR('https://desafio-compliasset.vercel.app/',fetcher, { initialData: datass,
+  revalidateOnMount: true,} )
 mutate(data,false)
   useEffect(()=> {
     
@@ -32,15 +38,23 @@ console.log('chaaaaa')
 
 },[data])
   return (
- <>
+   <SWRConfig
+ value={
+   {
+    
+   }
+ }
+>
+
       <Head>
         <title>Tela index </title>
         <meta name="description" content="blog desafio compliasset" />
         <link rel="icon" href="/favicon.ico" />
         
       </Head>
+      
         <Box display={"flex"} overflow={"auto"} flexDirection={"column"} gap={2} >
-          { data ? (data.map((dataa,i) => {
+          { datass ? (datass.map((dataa,i) => {
           
             return (
               <Card key={dataa.id} sx={{ maxWidth: 345 }}>
@@ -71,7 +85,7 @@ console.log('chaaaaa')
           })) : <h2>carregando</h2>}
             
         </Box>
-        </>
+        </SWRConfig>
      
   );
 }

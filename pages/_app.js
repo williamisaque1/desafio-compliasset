@@ -28,18 +28,12 @@ export default function MyApp(props) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <div className={[styleGlobal, styles.container]}>
           <CssBaseline />
-          <SWRConfig
-            value={{
-              fetcher: (resource, init) =>
-                axios("/api/teste").then((r) => r.data.result),
-            }}
-          >
-            <ResponsiveAppBar />
-            <main className={styles.main}>
-              <Component {...pageProps} />
-            </main>
-            <ButtonAdd />
-          </SWRConfig>
+
+          <ResponsiveAppBar />
+          <main className={styles.main}>
+            <Component {...pageProps} />
+          </main>
+          <ButtonAdd />
         </div>
       </ThemeProvider>
     </CacheProvider>
