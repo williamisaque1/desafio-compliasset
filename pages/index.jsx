@@ -10,23 +10,27 @@ import { Box } from "@mui/material";
 import Link from "next/link";
 import { useEffect,useState } from "react";
 import axios from "axios";
-
+import useSWR from 'swr'
   export async function getServerSideProps() {
     console.log('wjejj')
     
-     let res =  await axios.get('https://desafio-compliasset.vercel.app/api/teste')
-   let resposta  = await res.data.result     
+     //let res =  await axios.get('https://desafio-compliasset.vercel.app/api/teste')
+  // let resposta  = await res.data.result     
     return {
-      props: {data :resposta}, 
+      props: {data :'n'}, 
     }
   } 
-export default function Home({data}) {
-useEffect(()=> {
+export default function Home({}) {
+  let { data, error,mutate } =  useSWR('https://desafio-compliasset.vercel.app/')
+mutate(data,false)
+  useEffect(()=> {
+    
 
+ console.log(data)
 console.log('chaaaaa')
 
 
-},[])
+},[data])
   return (
  <>
       <Head>

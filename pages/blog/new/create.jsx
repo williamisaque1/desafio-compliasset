@@ -13,6 +13,7 @@ import Image from 'next/image';
 import axios from "axios";
 import Compress from 'compress.js';
 import CircularProgress from '@mui/material/CircularProgress';
+import Link from "next/link";
 
 export default function Create() {
     const  compress  =  new  Compress ()
@@ -92,6 +93,11 @@ export default function Create() {
     <meta name="description" content="blog desafio compliasset | criacao dos posts" />
     </Head>
     <Container maxWidth="lg" className={styles.new}>
+    <Link href={'/'} prefetch >
+        <button>voltar
+        
+        </button>
+        </Link>
         <form>
             <TextField
             id="standard-multiline-static"

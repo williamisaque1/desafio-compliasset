@@ -9,8 +9,10 @@ import createEmotionCache from "../src/createEmotionCache";
 import ResponsiveAppBar from "../components/header";
 import ButtonAdd from "../components/add";
 import styles from "../styles/Home.module.css";
-import styleGlobal from '../styles/globals.css'
+import styleGlobal from "../styles/globals.css";
 import Home from ".";
+import useSWR, { SWRConfig } from "swr";
+import axios from "axios";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -24,16 +26,20 @@ export default function MyApp(props) {
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <div className={[styleGlobal,styles.container]}> 
-        <CssBaseline />
-        <ResponsiveAppBar />
-        <main className={styles.main}>
-  
-       
-        <Component {...pageProps} />
-        </main>
-        <ButtonAdd/>
-       
+        <div className={[styleGlobal, styles.container]}>
+          <CssBaseline />
+          <SWRConfig
+            value={{
+              fetcher: (resource, init) =>
+                axios("/api/teste").then((r) => r.data.result),
+            }}
+          >
+            <ResponsiveAppBar />
+            <main className={styles.main}>
+              <Component {...pageProps} />
+            </main>
+            <ButtonAdd />
+          </SWRConfig>
         </div>
       </ThemeProvider>
     </CacheProvider>
